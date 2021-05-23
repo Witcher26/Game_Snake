@@ -44,13 +44,16 @@ namespace Game_snake
             }
             if (derection ==1)
             {
-                p[0].X = p[1].X-10;
+                p[0].X = p[1].X - 10;
+                if (p[0].X < 0) p[0].X = 490;
+                
                 p[0].Y = p[1].Y;// д
             }
 
             if (derection == 2)
             {
                 p[0].X = p[1].X + 10;
+                if (p[0].X > 490) p[0].X = 0;
                 p[0].Y = p[1].Y;// д
             }
 
@@ -59,11 +62,13 @@ namespace Game_snake
             {
                 p[0].X = p[1].X;
                 p[0].Y = p[1].Y-10;// отчёт по Y идёт сверху вниз 
+                if (p[0].Y < 0) p[0].Y = 490;
             }
             if (derection == 4)
             {
                 p[0].X = p[1].X;
                 p[0].Y = p[1].Y+10;// д
+                if (p[0].Y > 490) p[0].Y = 0;
             }
             // отрисовка червя
             SolidBrush b = new SolidBrush(Color.Brown);
