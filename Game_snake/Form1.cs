@@ -12,7 +12,7 @@ namespace Game_snake
 {
     public partial class Form1 : Form
     {
-        Point[] p; // Создаем массив из точек
+        Point[] p; //массив для сохранения координат
         Point apple; //  Яблоко
         int Len; // длина червя
         int derection; // 1 - left, 2-right, 3 - top, 4-button
@@ -20,12 +20,13 @@ namespace Game_snake
         {
             InitializeComponent();
             Len = 5; //длина червя
-            p = new Point[200]; // длина червя из 200 точек//инициализация массива
+            p = new Point[200]; // максммальная длина червя из 200 точек//инициализация массива
             derection = 3;
             for (int i=0; i < 5; i++)
             {
                 p[i].X = 100;
                 p[i].X = 100+i*10; // начальные координаты червя, размещение червяка вертилкально
+                //10 пикселей одно поле.
              }
 
             apple.X = 10;
@@ -44,10 +45,12 @@ namespace Game_snake
             }
             if (derection ==1)
             {
-                p[0].X = p[1].X - 10;
-                if (p[0].X < 0) p[0].X = 490;
                 
-                p[0].Y = p[1].Y;// д
+                p[0].X = p[1].X - 10;
+                if (p[0].X < 0) p[0].X= 490;
+                p[0].Y = p[1].Y;
+                
+                
             }
 
             if (derection == 2)
@@ -67,8 +70,8 @@ namespace Game_snake
             if (derection == 4)
             {
                 p[0].X = p[1].X;
-                p[0].Y = p[1].Y+10;// д
-                if (p[0].Y > 490) p[0].Y = 0;
+                p[0].Y = p[1].Y+10;
+                if (p[0].Y >490) p[0].Y = 0;
             }
             // отрисовка червя
             SolidBrush b = new SolidBrush(Color.Brown);
