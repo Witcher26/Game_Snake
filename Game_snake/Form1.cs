@@ -12,25 +12,25 @@ namespace Game_snake
 {
     public partial class Form1 : Form
     {
-        Point[] p; //массив для сохранения координат
+        Point[] p; //массив для хранения координат
         Point apple; //  Яблоко
         int Len; // длина червя
-        int derection; // 1 - left, 2-right, 3 - top, 4-button
+        int derection; // направление двжиения: 1 - налево, 2-направо, 3 - наверх, 4-вниз
         public Form1()
         {
             InitializeComponent();
-            Len = 5; //длина червя
-            p = new Point[200]; // максммальная длина червя из 200 точек//инициализация массива
+            Len = 7; //длина червя
+            p = new Point[200]; // максимальное кол-во координат/червя
             derection = 3;
-            for (int i=0; i < 5; i++)
+            for (int i=0; i < Len; i++)
             {
                 p[i].X = 100;
-                p[i].X = 100+i*10; // начальные координаты червя, размещение червяка вертилкально
+                p[i].X = 100+i*50; // начальные координаты червя, размещение червяка горизонтальное
                 //10 пикселей одно поле.
              }
 
-            apple.X = 10;
-            apple.Y = 10;
+            apple.X = 400;
+            apple.Y = 400;
                              
                 
                  
@@ -46,7 +46,7 @@ namespace Game_snake
             if (derection ==1)
             {
                 
-                p[0].X = p[1].X - 10;
+                p[0].X = p[1].X - 15;
                 if (p[0].X < 0) p[0].X= 490;
                 p[0].Y = p[1].Y;
                 
@@ -55,7 +55,7 @@ namespace Game_snake
 
             if (derection == 2)
             {
-                p[0].X = p[1].X + 10;
+                p[0].X = p[1].X + 15;
                 if (p[0].X > 490) p[0].X = 0;
                 p[0].Y = p[1].Y;// д
             }
@@ -64,26 +64,26 @@ namespace Game_snake
             if (derection == 3)
             {
                 p[0].X = p[1].X;
-                p[0].Y = p[1].Y-10;// отчёт по Y идёт сверху вниз 
+                p[0].Y = p[1].Y-15;// отчёт по Y идёт сверху вниз 
                 if (p[0].Y < 0) p[0].Y = 490;
             }
             if (derection == 4)
             {
                 p[0].X = p[1].X;
-                p[0].Y = p[1].Y+10;
+                p[0].Y = p[1].Y+15;
                 if (p[0].Y >490) p[0].Y = 0;
             }
             // отрисовка червя
-            SolidBrush b = new SolidBrush(Color.Brown);
+            SolidBrush b = new SolidBrush(Color.Black);
             for (int i =0; i<Len; i++)
             {
-                e.Graphics.FillEllipse(b, p[i].X, p[i].Y, 10, 10);
+                e.Graphics.FillEllipse(b, p[i].X, p[i].Y, 15, 15); // размеры точек 10 на 10
             }
 
             SolidBrush b1 = new SolidBrush(Color.Green);
             
             {
-                e.Graphics.FillEllipse(b1, apple.X, apple.Y, 10, 10);
+                e.Graphics.FillEllipse(b1, apple.X, apple.Y, 50, 50);
             }
             if(p[0].X==apple.X && p[0].Y==apple.Y) // событие после съедения яблока
             {
