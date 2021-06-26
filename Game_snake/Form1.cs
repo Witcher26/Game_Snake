@@ -25,12 +25,12 @@ namespace Game_snake
             for (int i=0; i < Len; i++)
             {
                 p[i].X = 100;
-                p[i].X = 100+i*50; // начальные координаты червя, размещение червяка горизонтальное
+                p[i].X = 100+i*10; // начальные координаты червя, размещение червяка горизонтальное
                 //10 пикселей одно поле.
              }
 
-            apple.X = 400;
-            apple.Y = 400;
+            apple.X = 100;
+            apple.Y = 100;
                              
                 
                  
@@ -46,7 +46,7 @@ namespace Game_snake
             if (derection ==1)
             {
                 
-                p[0].X = p[1].X - 15;
+                p[0].X = p[1].X - 10;
                 if (p[0].X < 0) p[0].X= 490;
                 p[0].Y = p[1].Y;
                 
@@ -55,7 +55,7 @@ namespace Game_snake
 
             if (derection == 2)
             {
-                p[0].X = p[1].X + 15;
+                p[0].X = p[1].X + 10;
                 if (p[0].X > 490) p[0].X = 0;
                 p[0].Y = p[1].Y;// д
             }
@@ -64,26 +64,26 @@ namespace Game_snake
             if (derection == 3)
             {
                 p[0].X = p[1].X;
-                p[0].Y = p[1].Y-15;// отчёт по Y идёт сверху вниз 
+                p[0].Y = p[1].Y-10;// отчёт по Y идёт сверху вниз 
                 if (p[0].Y < 0) p[0].Y = 490;
             }
             if (derection == 4)
             {
                 p[0].X = p[1].X;
-                p[0].Y = p[1].Y+15;
+                p[0].Y = p[1].Y+10;
                 if (p[0].Y >490) p[0].Y = 0;
             }
             // отрисовка червя
             SolidBrush b = new SolidBrush(Color.Black);
             for (int i =0; i<Len; i++)
             {
-                e.Graphics.FillEllipse(b, p[i].X, p[i].Y, 15, 15); // размеры точек 10 на 10
+                e.Graphics.FillEllipse(b, p[i].X, p[i].Y, 10, 10); // размеры точек 10 на 10
             }
 
             SolidBrush b1 = new SolidBrush(Color.Green);
             
             {
-                e.Graphics.FillEllipse(b1, apple.X, apple.Y, 50, 50);
+                e.Graphics.FillEllipse(b1, apple.X, apple.Y, 10, 10);
             }
             if(p[0].X==apple.X && p[0].Y==apple.Y) // событие после съедения яблока
             {
@@ -93,6 +93,27 @@ namespace Game_snake
                 apple.X = R.Next(0, 50) * 10;
                 apple.Y = R.Next(0, 50) * 10;
             }
+
+            //for(int i =0; i<Len; i++)
+            //{
+            //    if(p[0].X==p[198].X)
+            //    {
+            //        timer1.Enabled = false;
+            //    }
+
+            //  //  if (p[0].Y == p[i].Y)
+            // //   {
+            //    //    timer1.Enabled = false;
+            //  //  }
+            //}
+
+            //for(int i =0; i<Len; i++)
+            //{
+            //    if(p[0].X==p[i].X && p[0].Y == p[i].Y)
+            //    {
+            //        timer1.Enabled = false;
+            //    }
+            //}    
         }
 
         private void timer1_Tick(object sender, EventArgs e)
